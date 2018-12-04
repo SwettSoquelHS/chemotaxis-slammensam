@@ -4,7 +4,7 @@ void setup()
 {     
   size(1024, 576);
   background(255);
-  b = new Bacteria[10000];
+  b = new Bacteria[90];
   for (int i = 0; i < b.length; i++) {
     int x = (int)(width*Math.random());
     int y = (int)(width*Math.random());
@@ -15,8 +15,10 @@ void setup()
 
 void draw()   
 {    
+  background(255);
   for (int i = 0; i < b.length; i++) {
     b[i].show();
+    b[i].move();
     //move and show the bacteria
   }  
   
@@ -25,10 +27,14 @@ void draw()
 class Bacteria{
     float x_pos;
     float y_pos;
+    double moveX;
+    double moveY;
     color c;
     Bacteria(float x, float y, color c) {
       x_pos = x;
       y_pos = y;
+      moveX = x;
+      moveY = y;
       this.c = c;
     }
 
@@ -41,6 +47,8 @@ class Bacteria{
     }
 
     void move() {
+      x_pos = x_pos + (int)(Math.random() * 5) - 2;
+      y_pos = y_pos + (int)(Math.random() * 5) - 2;
       
     }
   }
